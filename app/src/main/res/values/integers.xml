@@ -1,0 +1,3 @@
+<resources>
+    <integer name="maximum">10</integer>
+</resources>
