@@ -22,22 +22,33 @@
     <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonleft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:onClick="compare1" />
+        android:onClick="checkLeft" />
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:onClick="compare2" />
+        android:onClick="checkRight" />
     </LinearLayout>
     </TableLayout>
-    <TextView
-        android:id="@+id/score"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/score" />
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/gameswon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/games_won" />
+    <TextView
+        android:id="@+id/gamesplayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/games_played" />
+        </LinearLayout>
 </LinearLayout>

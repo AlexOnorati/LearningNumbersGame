@@ -17,12 +17,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    int value1 = 0;
-    int value2 = 0;
-    int score = 0;
-    int max = 10;
-    Random randInt;
-
+    LearningNumbersModal modal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,50 +25,40 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        randInt = new Random();
-        generateNumbers();
+        modal = new LearningNumbersModal();
+        modal.generateNumbers();
+        updateDisplay();
     }
 
-    public void generateNumbers(){
-        value1 = randInt.nextInt(max) + 1;
-        value2 = randInt.nextInt(max) + 1;
+    public void updateDisplay(){
 
-        if(value1 == value2){
-
-            if(value1 > max/2){
-                value1 = randInt.nextInt(value1-1)+1;
-            }else{
-                value1 = randInt.nextInt(max - value1)+1 + value1;
-            }
-        }
-        Button button1 = (Button) findViewById(R.id.button1);
-        button1.setText(""+value1);
+        Button buttonLeft = (Button) findViewById(R.id.buttonleft);
+        buttonLeft.setText(""+modal.getLeftNumber());
 
 
-        Button button2 = (Button) findViewById(R.id.button2);
-        button2.setText("" + value2);
+        Button buttonRight = (Button) findViewById(R.id.buttonright);
+        buttonRight.setText(""+modal.getRightNumber());
 
-        TextView scoreView = (TextView)findViewById(R.id.score);
-        scoreView.setText("score: " + score);
+        TextView wonView = (TextView)findViewById(R.id.gameswon);
+        wonView.setText("Correct: " + modal.getGamesWon());
+
+        TextView gameCountView = (TextView)findViewById(R.id.gamesplayed);
+        gameCountView.setText("Total Games: " + modal.getGamesPlayed());
 
     }
 
-    public void compare1(View view){
-
-        if(value1 >= value2){
+    public void checkLeft(View view){
+        if(modal.play(LearningNumbersModal.LEFT_SIDE)){
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
-            score += 1;
         }
-        generateNumbers();
+        updateDisplay();
     }
 
-    public void compare2(View view) {
-
-        if(value2 >= value1){
+    public void checkRight(View view){
+        if(modal.play(LearningNumbersModal.RIGHT_SIDE)){
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
-            score += 1;
         }
-        generateNumbers();
+        updateDisplay();
     }
 
     @Override

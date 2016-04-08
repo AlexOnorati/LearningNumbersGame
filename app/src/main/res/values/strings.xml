@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Learning Numbers</string>
     <string name="action_settings">Select the larger number.</string>
-    <string name="button1"></string>
-    <string name="button2"></string>
-    <string name="score"></string>
+    <string name="butto_left"></string>
+    <string name="button_right"></string>
+    <string name="games_won"></string>
+    <string name="games_played"></string>
 </resources>
